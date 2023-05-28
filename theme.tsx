@@ -1,4 +1,12 @@
 import { ThemeOptions, createTheme } from "@mui/material/styles";
+import { DM_Sans } from "next/font/google";
+
+const dmsans = DM_Sans({
+  style: ["normal", "italic"],
+  weight: ["400", "500", "700"],
+  variable: "--font-dmsans",
+  subsets: ["latin"]
+});
 
 const themeOptions: ThemeOptions = createTheme({
   palette: {
@@ -17,21 +25,27 @@ const themeOptions: ThemeOptions = createTheme({
     }
   },
   typography: {
+    fontFamily: dmsans.style.fontFamily,
     fontSize: 18,
     body1: {
-      fontSize: 18
+      fontSize: 18,
+      color: "white"
     },
     body2: {
-      fontSize: 16
+      fontSize: 16,
+      color: "white"
     },
     subtitle1: {
-      fontSize: 14
+      fontSize: 14,
+      color: "white"
     },
     h1: {
-      fontSize: 30
+      fontSize: 30,
+      color: "white"
     },
     h2: {
-      fontSize: 22
+      fontSize: 22,
+      color: "white"
     }
   }
 });
