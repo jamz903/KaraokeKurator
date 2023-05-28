@@ -1,0 +1,7 @@
+html {
+  font-family: var(--font-dmsans);
+}
+
+#logo-title {
+  font-family: var(--font-poppins);
+}
