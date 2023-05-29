@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { Container } from "./components/common/Container";
 import LogoFull from "public/logo_full.svg";
 import ButtonGhost from "./components/common/buttons/button-ghost";
 import ButtonPrimary from "./components/common/buttons/button-primary";
+import { Container } from "./components/common/boxes/container";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -14,12 +15,16 @@ export default function Home() {
           <p className="text-lg">Your ultimate song selector</p>
         </div>
       </div>
-      <div className="flex flex-col w-[50%] gap-5 pt-[5vh]">
+      <div className="flex flex-col w-[80%] gap-5 pt-[5vh]">
         <ButtonPrimary>
-          <p>Sign Up</p>
+          <Link href="/auth/signUp">
+            <p>Sign Up</p>
+          </Link>
         </ButtonPrimary>
         <ButtonGhost>
-          <p>Login</p>
+          <Link href="/auth/login">
+            <p>Login</p>
+          </Link>
         </ButtonGhost>
       </div>
     </Container>
