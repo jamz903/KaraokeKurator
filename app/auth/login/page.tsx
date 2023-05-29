@@ -18,8 +18,8 @@ const Login = () => {
 
         <div className="flex flex-col items-center gap-3">
           <div className="flex flex-col w-full">
-            <TextInputField header="Email" sampleText={"hello@gmail.com"} type="email" />
-            <TextInputField header="Password" sampleText={""} type="password" />
+            <TextInputField header="Email" placeholder={"hello@gmail.com"} type="email" />
+            <TextInputField header="Password" placeholder={""} type="password" />
           </div>
           <Link href="/auth/resetPassword">
             <p className="text-sm pt-3 text-primary-600">Forgot Password?</p>
