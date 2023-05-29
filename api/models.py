@@ -2,17 +2,14 @@ from pydantic import BaseModel
 from typing import List
 from datetime import datetime
 
-class Link(BaseModel):
-    url: str
-
 class Song(BaseModel):
-    song_id: int
+    song_id: str
     song_name: str
     artist_name: str
     album_name: str
 
 class Playlist(BaseModel):
-    playlist_id: int
+    playlist_id: str
     playlist_name: str
     songs: List[Song]
     is_deleted: bool
@@ -20,7 +17,7 @@ class Playlist(BaseModel):
     date_created: datetime 
 
 class User(BaseModel):
-    user_id: int
+    user_id: str
     name: str
     username: str
     email: str
