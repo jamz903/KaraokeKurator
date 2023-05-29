@@ -1,15 +1,17 @@
-const TextInputField = ({ header, sampleText, ...rest }) => {
+import { mergeClasses } from "app/utils/merge-classes";
+
+const TextInputField = ({ header = "", placeholder = "", className = "", ...rest }) => {
   return (
     <div className="flex flex-col items-start w-full">
-      <label>{header}</label>
+      {header !== "" && <label>{header}</label>}
       <input
-        className="w-full p-3 h-full text-lg bg-transparent"
-        style={{
-          border: "2px solid grey",
-          borderRadius: "4px",
-          outline: "none"
-        }}
-        placeholder={sampleText}
+        className={mergeClasses({
+          classes: [
+            "w-full p-3 h-full text-lg bg-transparent border-gray-600 border-2 rounded placeholder-italic",
+            className
+          ]
+        })}
+        placeholder={placeholder}
         {...rest}
       />
     </div>

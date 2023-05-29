@@ -23,7 +23,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${dm_sans.variable} ${poppins.variable} `}>
-      <body className={`font-sans bg-page-gradient h-screen text-white-600`}>{children}</body>
+      <body className={`font-sans bg-page-gradient h-screen text-white-600 font-normal`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -7,7 +7,7 @@ export const Container = ({ children, className = "", ...props }: P) => {
   return (
     <section
       className={mergeClasses({
-        classes: ["max-w-screen-xl w-full px-6 lg:px-12 mx-auto", className]
+        classes: ["max-w-screen-xl w-full px-8 lg:px-12 mx-auto", className]
       })}
       {...props}
     >

@@ -18,10 +18,10 @@ const SignUp = () => {
 
         <div className="flex flex-col items-center gap-3">
           <div className="flex flex-col w-full gap-2">
-            <TextInputField header="Username" sampleText={"Your Username"} type="text" />
-            <TextInputField header="Email" sampleText={"hello@gmail.com"} type="email" />
-            <TextInputField header="Password" sampleText={""} type="password" />
-            <TextInputField header="Confirm Password" sampleText={""} type="password" />
+            <TextInputField header="Username" placeholder={"Your Username"} type="text" />
+            <TextInputField header="Email" placeholder={"hello@gmail.com"} type="email" />
+            <TextInputField header="Password" placeholder={""} type="password" />
+            <TextInputField header="Confirm Password" placeholder={""} type="password" />
           </div>
         </div>
 
