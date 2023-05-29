@@ -1,33 +1,30 @@
-import uuid
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from typing import List
+from datetime import datetime
 
-class TaskModel(BaseModel):
-    id: str = Field(default_factory=uuid.uuid4, alias="_id")
-    name: str = Field(...)
-    description: str = Field(...)
-    is_finished: bool = Field(...)
+class Link(BaseModel):
+    url: str
 
-    class Config:
-        allow_population_by_field_name = True
-        schema_extra = {
-            "example": {
-                "id": "0000000",
-                "name": "Task 1",
-                "description": "Description of task 1",
-                "is_finished": False
-            }
-        }
-    
-class TaskUpdateModel(BaseModel):
-    name: str = Field(...)
-    description: str = Field(...)
-    is_finished: bool = Field(...)
+class Song(BaseModel):
+    song_id: int
+    song_name: str
+    artist_name: str
+    album_name: str
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "name": "Task 1",
-                "description": "Description of task 1",
-                "is_finished": False
-            }
-        }
+class Playlist(BaseModel):
+    playlist_id: int
+    playlist_name: str
+    songs: List[Song]
+    is_deleted: bool
+    is_blacklist: bool
+    date_created: datetime 
+
+class User(BaseModel):
+    user_id: int
+    name: str
+    username: str
+    email: str
+    to_go_playlist: Link
+    playlists: List[Playlist]
+    blacklist: List[Song]
+
