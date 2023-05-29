@@ -4,7 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 
 # Models import
-from api.models import TaskModel, TaskUpdateModel
+from models import TaskModel, TaskUpdateModel
 
 # Config import
 from config import settings

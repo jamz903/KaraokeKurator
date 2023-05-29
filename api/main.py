@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from motor.motor_asyncio import AsyncIOMotorClient
 from config import settings
-from api.routers import get_api_router
+from routers import get_api_router
 
 # Create the FastAPP app
 app = FastAPI()

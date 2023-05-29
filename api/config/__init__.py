@@ -12,7 +12,7 @@ class DatabaseSettings(BaseSettings):
     DB_URL: str = "mongodb+srv://tasks_api_user:tasksapiuser123@cluster0.mchrlop.mongodb.net/?retryWrites=true&w=majority"
     DB_NAME: str = "tasksDatabase"
 
-class Settings(CommonSettings, ServerSettings):
+class Settings(CommonSettings, ServerSettings, DatabaseSettings):
     pass
 
 settings = Settings()

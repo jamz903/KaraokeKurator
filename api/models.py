@@ -18,16 +18,16 @@ class TaskModel(BaseModel):
             }
         }
     
-    class TaskUpateModel(BaseModel):
-        name: str = Field(...)
-        description: str = Field(...)
-        is_finished: bool = Field(...)
+class TaskUpdateModel(BaseModel):
+    name: str = Field(...)
+    description: str = Field(...)
+    is_finished: bool = Field(...)
 
-        class Config:
-            schema_extra = {
-                "example": {
-                    "name": "Task 1",
-                    "description": "Description of task 1",
-                    "is_finished": False
-                }
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "Task 1",
+                "description": "Description of task 1",
+                "is_finished": False
             }
+        }
