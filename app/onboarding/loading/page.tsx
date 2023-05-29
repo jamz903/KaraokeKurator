@@ -4,6 +4,9 @@ import ButtonPrimary from "app/components/common/buttons/button-primary";
 import Link from "next/link";
 import { ScaleLoader } from "react-spinners";
 
+// REMOVE NEXT BUTTON
+// NAVIGATE TO `/playlists/output` AFTER RECOMMENDED SONGS LOAD FINISH
+
 const Playlist = () => {
   return (
     <Container className="flex flex-col align-center h-screen justify-between pb-[15vh]">
@@ -16,7 +19,7 @@ const Playlist = () => {
         <ScaleLoader color="white" width="8vw" height="17vh" className="pt-[7vh]" />
       </div>
       <ButtonPrimary className="w-full">
-        <Link href="/onboarding/loading">
+        <Link href="/playlists/output">
           <p>Next</p>
         </Link>
       </ButtonPrimary>
