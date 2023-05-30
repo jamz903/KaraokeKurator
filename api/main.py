@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import uvicorn
 from fastapi import FastAPI, UploadFile
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -11,6 +12,8 @@ from typing import List, Optional
 from datetime import datetime
 from bson.objectid import ObjectId
 from enum import Enum
+import user
+import json
 
 load_dotenv()
 
@@ -224,6 +227,24 @@ async def create_song(user_id, playlist_name, obj: Song):
 @app.delete("/users/{user_id}/playlists/{playlist_id}/songs/{song_id}")
 async def delete_song(user_id, playlist_id, obj):
     return 
+
+@app.get("/users/songs/suggested")
+async def get_suggested_songs():
+    dataset = pd.read_csv('Test_data.csv', index_col=0)
+    ids = [44571, 94262, 90148, 573852, 75443,
+       218969, 87025, 85416, 112607, 85328,
+       88707, 357201, 112391, 112383, 85053]
+    song_infos = dataset.loc[ids]
+    cur_user = user.User(song_infos)
+
+    # Get song recommendations
+    songs = cur_user.get_recommendations()
+    songs.to_json("songs.json")
+    f = open("songs.json")
+    json_data = json.load(f)
+
+    return json_data
+    
 
 
 # Define our main function so we can easily run the server

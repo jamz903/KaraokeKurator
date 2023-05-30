@@ -12,18 +12,23 @@ import "react-modern-drawer/dist/index.css";
 // Keep track of which item is selected somehow using form
 
 const songs: Song[] = [
+  { name: "A gritos de esperanza", band: "Alex Ubago", yearReleased: "2013", albumCover: "" },
+  {
+    name: "Taal Se Taal - Western Version",
+    band: "Sukhwinder Singh",
+    yearReleased: "2013",
+    albumCover: ""
+  },
+  { name: "Saviour", band: "Island Republic", yearReleased: "2013", albumCover: "" },
+  { name: "Vida Cigana", band: "Raça Negra", yearReleased: "2019", albumCover: "" },
+  { name: "勇", band: "Miriam Yeung", yearReleased: "2012", albumCover: "" },
+  { name: "Corzinha De Verão", band: "Deolinda", yearReleased: "2017", albumCover: "" },
+  { name: "Koştum Hekime", band: "Burak King", yearReleased: "2012", albumCover: "" },
+  { name: "Tapi Bagaimana", band: "Spider", yearReleased: "2014", albumCover: "" },
+  { name: "Gak Kayak Mantanmu", band: "Ello", yearReleased: "2016", albumCover: "" },
+  { name: "Bumerang", band: "Tulus", yearReleased: "2014", albumCover: "" },
   { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" }
+  { name: "everything", band: "John K", yearReleased: "2020", albumCover: "" }
 ];
 
 const Output = () => {
