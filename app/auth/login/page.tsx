@@ -28,7 +28,9 @@ const Login = () => {
 
         <div className="flex flex-col items-center">
           <ButtonPrimary className="w-full mb-3">
-            <p>Login</p>
+            <Link href="/onboarding/welcome">
+              <p>Login</p>
+            </Link>
           </ButtonPrimary>
           <div className="flex">
             <p className="text-sm mr-1">Don't have an account?</p>
