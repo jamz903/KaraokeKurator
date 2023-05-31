@@ -47,15 +47,16 @@ const Output = () => {
           </p>
         </div>
         <div>
-          {playlists.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => setSelectedItem(item)}
-              style={{ backgroundColor: item === selectedItem ? "lightblue" : "" }}
-            >
-              {item.name}
-            </div>
-          ))}
+          {playlists.length !== 0 &&
+            playlists.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => setSelectedItem(item)}
+                style={{ backgroundColor: item === selectedItem ? "lightblue" : "" }}
+              >
+                {item.name}
+              </div>
+            ))}
         </div>
       </div>
 
@@ -65,6 +66,7 @@ const Output = () => {
         onClick={() => console.log(authToken)}
       >
         <Link
+          className={`${selectedItem === null ? "pointer-events-none" : ""}`}
           href={`/onboarding/loading?playlistId=${selectedItem === null ? "" : selectedItem.id}`}
         >
           <p>Analyze this playlist!</p>
