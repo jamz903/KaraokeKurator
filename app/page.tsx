@@ -17,15 +17,15 @@ export default function Home() {
       </div>
       <div className="flex flex-col w-[80%] gap-5 pt-[5vh]">
         <ButtonPrimary>
-          <Link href="/auth/signUp">
-            <p>Sign Up</p>
+          <Link href="/onboarding/welcome">
+            <p>Try Us Out!</p>
           </Link>
         </ButtonPrimary>
-        <ButtonGhost>
-          <Link href="/auth/login">
-            <p>Login</p>
-          </Link>
-        </ButtonGhost>
+        {/* <ButtonGhost> */}
+        {/* <Link href="/auth/login"> */}
+        {/* <p>Login</p> */}
+        {/* </Link> */}
+        {/* </ButtonGhost> */}
       </div>
     </Container>
   );

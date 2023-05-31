@@ -112,7 +112,7 @@ const Playlist = () => {
 
   return (
     <Container className="flex flex-col align-center h-screen justify-between pb-[15vh]">
-      <Link href="/" className="pt-[7vh]">
+      <Link href="/onboarding/welcome" className="pt-[7vh]">
         <IoMdArrowBack className="h-8 w-8" />
       </Link>
       <div className="flex flex-col self-start h-full pt-[5vh]">
@@ -122,11 +122,15 @@ const Playlist = () => {
             We'll analyze your preferences according to your songs in the playlist!
           </p>
         </div>
+        <p className="pt-3 text-center">
+          Due to time constraints, we couldn't prettify this page :( Please click on "Login to
+          Spotify" first. After authentication, then click on "Get Auth Token"! Finally, click Next.
+        </p>
         <ButtonPrimary className="w-full mt-10" onClick={handleSpotifyLogin}>
-          <p>First, login to Spotify here</p>
+          <p>Login to Spotify</p>
         </ButtonPrimary>
         <ButtonPrimary className="w-full mt-10" onClick={getAuthToken}>
-          <p>Next, get your auth token!</p>
+          <p>Get Auth Token</p>
         </ButtonPrimary>
       </div>
       <ButtonPrimary className="w-full" disabled={authToken === ""}>
