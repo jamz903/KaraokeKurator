@@ -6,7 +6,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { useAppContext } from "app/AppContext";
 
 const clientId = "30e0e3ed7eff42629489051b13a9882f";
-const redirectUri = "http://localhost:3000/onboarding/spotify";
+const redirectUri = "jamz903.github.io/karaMonke/onboarding/spotify";
 
 function generateRandomString(length) {
   let text = "";
