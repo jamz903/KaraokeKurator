@@ -41,7 +41,7 @@ class Clustering_Model:
         cwd = os.getcwd()
         
         # load the model
-        model_path = cwd + '/clustering_model.joblib'
+        model_path = cwd + '/model_2.joblib'
         self.model = load(model_path)
         
         # load the data
