@@ -25,7 +25,7 @@ const Welcome = () => {
         </div>
       </div>
       <ButtonPrimary className="w-full">
-        <Link href="/onboarding/playlist">
+        <Link href="/onboarding/spotify">
           <p>Next</p>
         </Link>
       </ButtonPrimary>

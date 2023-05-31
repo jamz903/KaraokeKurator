@@ -49,7 +49,7 @@ const Output = () => {
           </p>
           <p className="text-md">
             ...or{" "}
-            <Link href="/onboarding/playlist">
+            <Link href="/onboarding/spotify">
               <span className="text-primary-600 underline">add another playlist!</span>
             </Link>
           </p>

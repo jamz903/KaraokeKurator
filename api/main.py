@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import uvicorn
 from fastapi import FastAPI, UploadFile
+from fastapi.responses import RedirectResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from config import settings
 from pymongo import MongoClient
@@ -14,6 +15,7 @@ from bson.objectid import ObjectId
 from enum import Enum
 import user
 import json
+import requests
 
 load_dotenv()
 
@@ -51,6 +53,11 @@ class User(BaseModel):
     song_recommender: Optional[UploadFile] = None
     age: int
     pitch: PitchEnum 
+    
+class SpotifyAuth(BaseModel):
+    redirectUri: str
+    clientId: str
+    clientSecret: str
 
 # Create the FastAPP app
 app = FastAPI()
@@ -78,6 +85,24 @@ async def root():
         "playlists": "/users/{user_id}/playlists",
         "songs": "/users/{user_id}/playlists/{playlist_id}/songs"
     } }
+   
+cid = "30e0e3ed7eff42629489051b13a9882f"
+scope = "user-read-private user-read-email"
+redirect_uri = "http://localhost:8000/"
+# Spotify
+@app.get("/spotify/access_token")
+async def get_access_token():
+    response = requests.post(
+        "https://accounts.spotify.com/api/token",
+        data={
+            "grant_type": "authorization_code",
+            "code": auth_code,
+            "redirect_uri": redirect_uri,
+        },
+        auth=(client_id, client_secret),
+    )
+    access_token = response.json()["access_token"]
+    return {"Authorization": "Bearer " + access_token}
 
 # Users
 @app.get("/users/{user_id}")

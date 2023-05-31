@@ -1,33 +1,75 @@
 "use client";
+import { useAppContext } from "app/AppContext";
 import { Container } from "app/components/common/boxes/container";
 import ButtonPrimary from "app/components/common/buttons/button-primary";
-import TextInputField from "app/components/common/inputs/TextInputField";
 import Link from "next/link";
-import { IoMdArrowBack } from "react-icons/io";
+import { useEffect, useState } from "react";
 
-const Playlist = () => {
+// Keep track of which item is selected somehow using form
+
+const Output = () => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [playlists, setPlaylists] = useState([]);
+  const { authToken, changeAuthToken } = useAppContext();
+
+  useEffect(() => {
+    const token = authToken;
+    console.log(token);
+
+    fetch(`https://api.spotify.com/v1/me/playlists`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
+      .then((response) => {
+        const res = response.json();
+        console.log(res);
+        return res;
+      })
+      .then((data) => setPlaylists(data.items));
+  }, []);
+
   return (
     <Container className="flex flex-col align-center h-screen justify-between pb-[15vh]">
-      <Link href="/" className="pt-[7vh]">
-        <IoMdArrowBack className="h-8 w-8" />
-      </Link>
       <div className="flex flex-col self-start h-full pt-[5vh]">
-        <div className="flex flex-col gap-5 text-center">
-          <p className="text-4xl font-medium">Enter a Spotify playlist</p>
+        <div className="flex flex-col gap-2 pb-8">
+          <p className="text-5xl font-medium">
+            Check <br /> these out!
+          </p>
           <p className="text-xl">
-            We'll analyze your preferences according to your songs in the playlist!
+            Save this to a new Spotify playlist, let us know if you love these choices!
+          </p>
+          <p className="text-md">
+            ...or{" "}
+            <Link href="/onboarding/spotify">
+              <span className="text-primary-600 underline">add another playlist!</span>
+            </Link>
           </p>
         </div>
-
-        <TextInputField className="mt-10" placeholder={"Enter a Spotify link"} />
+        <div>
+          {playlists.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => setSelectedItem(item)}
+              style={{ backgroundColor: item === selectedItem ? "lightblue" : "" }}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
       </div>
-      <ButtonPrimary className="w-full">
-        <Link href="/onboarding/loading">
-          <p>Next</p>
+
+      <ButtonPrimary
+        className="w-full mt-8"
+        disabled={selectedItem === null}
+        onClick={() => console.log(authToken)}
+      >
+        <Link href={`/onboarding/loading?playlistId=${item.id}`}>
+          <p>Analyze this playlist!</p>
         </Link>
       </ButtonPrimary>
     </Container>
   );
 };
 
-export default Playlist;
+export default Output;
