@@ -31,7 +31,7 @@ const Playlist = () => {
     //   })
     //   .then((data) => console.log(data.items));
 
-    fetch(`../../api/users/songs/suggested`).then((r) => console.log(r.json()));
+    fetch(`../api/users/songs/suggested`).then((r) => console.log(r.json()));
   }, []);
 
   return (
