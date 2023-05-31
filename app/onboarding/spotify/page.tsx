@@ -121,15 +121,14 @@ const Playlist = () => {
             We'll analyze your preferences according to your songs in the playlist!
           </p>
         </div>
-
         <ButtonPrimary className="w-full mt-10" onClick={handleSpotifyLogin}>
           <p>First, login to Spotify here</p>
         </ButtonPrimary>
         <ButtonPrimary className="w-full mt-10" onClick={getAuthToken}>
-          <p>Next, get you auth token</p>
+          <p>Next, get your auth token!</p>
         </ButtonPrimary>
       </div>
-      <ButtonPrimary className="w-full">
+      <ButtonPrimary className="w-full" disabled={authToken === ""}>
         <Link href="/onboarding/playlist">
           <p>Next</p>
         </Link>

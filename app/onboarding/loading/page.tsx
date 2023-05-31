@@ -16,20 +16,22 @@ const Playlist = () => {
   const { authToken, changeAuthToken } = useAppContext();
 
   useEffect(() => {
-    const token = authToken;
-    console.log(token);
+    // const token = authToken;
+    // console.log(token);
 
-    fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    })
-      .then((response) => {
-        const res = response.json();
-        console.log(res);
-        return res;
-      })
-      .then((data) => console.log(data.items));
+    // fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+    //   headers: {
+    //     Authorization: "Bearer " + token
+    //   }
+    // })
+    //   .then((response) => {
+    //     const res = response.json();
+    //     console.log(res);
+    //     return res;
+    //   })
+    //   .then((data) => console.log(data.items));
+
+    fetch(`http://127.0.0.1:8000/users/songs/suggested`).then((r) => console.log(r.json()));
   }, []);
 
   return (
