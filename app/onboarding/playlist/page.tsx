@@ -67,7 +67,7 @@ const Output = () => {
       >
         <Link
           className={`${selectedItem === null ? "pointer-events-none" : ""}`}
-          href={`/onboarding/loading?playlistId=${selectedItem === null ? "" : selectedItem.id}`}
+          href={`/playlists/output?playlistId=${selectedItem === null ? "" : selectedItem.id}`}
         >
           <p>Analyze this playlist!</p>
         </Link>

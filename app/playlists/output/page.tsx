@@ -8,30 +8,65 @@ import Link from "next/link";
 import { useState } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
+import { useEffect } from "react";
+import { useAppContext } from "app/AppContext";
+import { useSearchParams } from "next/navigation";
+import { ScaleLoader } from "react-spinners";
 
 // Keep track of which item is selected somehow using form
 
-const songs: Song[] = [
-  { name: "A gritos de esperanza", band: "Alex Ubago", yearReleased: "2013", albumCover: "" },
-  {
-    name: "Taal Se Taal - Western Version",
-    band: "Sukhwinder Singh",
-    yearReleased: "2013",
-    albumCover: ""
-  },
-  { name: "Saviour", band: "Island Republic", yearReleased: "2013", albumCover: "" },
-  { name: "Vida Cigana", band: "Raça Negra", yearReleased: "2019", albumCover: "" },
-  { name: "勇", band: "Miriam Yeung", yearReleased: "2012", albumCover: "" },
-  { name: "Corzinha De Verão", band: "Deolinda", yearReleased: "2017", albumCover: "" },
-  { name: "Koştum Hekime", band: "Burak King", yearReleased: "2012", albumCover: "" },
-  { name: "Tapi Bagaimana", band: "Spider", yearReleased: "2014", albumCover: "" },
-  { name: "Gak Kayak Mantanmu", band: "Ello", yearReleased: "2016", albumCover: "" },
-  { name: "Bumerang", band: "Tulus", yearReleased: "2014", albumCover: "" },
-  { name: "Moves like Jagger", band: "Maroon 5", yearReleased: "2013", albumCover: "" },
-  { name: "everything", band: "John K", yearReleased: "2020", albumCover: "" }
+const songs = [
+  ["Eu Tá Vendo no Copo", "['Noriel Vilela']"],
+  ["Nuestro Matrimonio", "['Nati Y Su Orquesta']"],
+  ["Metaxota Sou Heria Ta", "['Antonis Remos']"],
+  ["Indianer", "['Sven-Ingvars']"],
+  ["Liljankukka", "['Päivi']"],
+  ["Epilog", "['Jack DeJohnette']"],
+  ["A New Way of Driving", "['B.B. King']"],
+  ["Everything", "['Faye Wong']"],
+  ["Aavani Poovin", "['P. Jayachandran']"],
+  ["Nigdy więcej nie spotkamy się", "['Trubadurzy']"]
 ];
 
 const Output = () => {
+  const searchParams = useSearchParams();
+  const playlistId = searchParams.get("playlistId");
+  const [songData, setSongData] = useState([]);
+  const { authToken, changeAuthToken } = useAppContext();
+
+  useEffect(() => {
+    const token = authToken;
+    console.log(token);
+
+    fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
+      .then((response) => {
+        const res = response.json();
+        console.log(res);
+        return res;
+      })
+      .then((data) => {
+        const ids = data.items.map((song) => song.track.id);
+        const headers = {
+          "Content-Type": "application/json"
+        };
+        const body = JSON.stringify({ ids: ids });
+        console.log(body);
+        fetch(`http://127.0.0.1:8000/users/songs/suggested`, {
+          method: "POST",
+          headers: headers,
+          body: body
+        }).then(async (r) => {
+          const res = await r.json();
+          console.log(res);
+          setSongData(res);
+        });
+      });
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
@@ -54,7 +89,10 @@ const Output = () => {
             </Link>
           </p>
         </div>
-        <PlaylistCarousel songs={songs} />
+        {songData.length === 0 && (
+          <ScaleLoader color="white" width="8vw" height="17vh" className="pt-[7vh]" />
+        )}
+        {songData.length !== 0 && <PlaylistCarousel songs={songData} />}
       </div>
 
       <ButtonPrimary className="w-full mt-8" onClick={toggleDrawer}>

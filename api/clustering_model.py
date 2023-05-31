@@ -106,7 +106,7 @@ class Clustering_Model:
         dates = pd.to_datetime(X['release_date'], format='mixed').dt.strftime('%Y')
         X = X.drop('release_date', axis=1)
         X['year'] = dates
-        return
+        return X
     
     def downvote(self, song_num):
         '''

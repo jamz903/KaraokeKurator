@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import clustering_model
 import deepLearning
+import json
 
 global_clustering_model = clustering_model.Clustering_Model()
 spot_getter = clustering_model.SpotifyGetter()
@@ -39,7 +40,9 @@ class User():
             return None
         
         self.new_playlist = return_songs_info
-        return return_songs
+        res = [[i,j]for i , j in zip(return_songs.name, return_songs.artists)]
+        return res
+        
         
     def receive_feedback_train(self, feedback):
         '''
