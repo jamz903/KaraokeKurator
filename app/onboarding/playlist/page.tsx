@@ -64,7 +64,9 @@ const Output = () => {
         disabled={selectedItem === null}
         onClick={() => console.log(authToken)}
       >
-        <Link href={`/onboarding/loading?playlistId=${item.id}`}>
+        <Link
+          href={`/onboarding/loading?playlistId=${selectedItem === null ? "" : selectedItem.id}`}
+        >
           <p>Analyze this playlist!</p>
         </Link>
       </ButtonPrimary>
